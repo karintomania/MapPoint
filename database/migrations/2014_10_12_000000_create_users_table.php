@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('twitter_id')->unique();
+            $table->string('twitter_token');
+            $table->string('twitter_token_secret');
             $table->rememberToken();
             $table->timestamps();
         });
+
     }
 
     /**

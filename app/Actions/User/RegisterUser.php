@@ -19,6 +19,9 @@ class RegisterUser {
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'twitter_id' => '',
+            'twitter_token' => '',
+            'twitter_token_secret' => '',
         ]);
 
         return $user;

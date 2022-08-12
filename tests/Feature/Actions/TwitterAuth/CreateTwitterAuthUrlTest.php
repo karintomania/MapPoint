@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Actions\TwitterAuth\CreateTwitterAuthUrl;
 use Tests\TestCase;
 /**
- * php artisan test ./tests/Feature/Actions/TwitterAuth/
+ * php artisan test ./tests/Feature/Actions/TwitterAuth/CreateTwitterAuthUrlTest.php
  */
 class CreateTwitterAuthUrlTest extends TestCase
 {

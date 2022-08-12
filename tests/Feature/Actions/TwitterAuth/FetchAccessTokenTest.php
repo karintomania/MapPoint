@@ -13,12 +13,22 @@ class FetchAccessTokenTest extends TestCase
     // use DatabaseMigrations;
 
     public function test_fetchAccessToken_fetches_access_token(){
-        $fetchAccessToken = resolve(FetchAccessToken::class);
-        $result = $fetchAccessToken();
 
-        $this->assertEquals(200, $result['status']);
+        $this->markTestSkipped('This test requires an operation on twitter auth page.');
+
+        $fetchAccessToken = resolve(FetchAccessToken::class);
+
+        $data = [
+            'oauth_token' => '9xNwFgAAAAABRJwMAAABgpHWXO8',
+            'oauth_verifier' => '0uSJyCSeOtxGK58uPU6xYt4CH0kuRV5u',
+        ];
+        $result = $fetchAccessToken($data);
+
         $this->assertNotEmpty($result['oauth_token']);
         $this->assertNotEmpty($result['oauth_token_secret']);
+        $this->assertNotEmpty($result['user_id']);
+        $this->assertNotEmpty($result['screen_name']);
+
     }
 
 }

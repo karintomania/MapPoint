@@ -18,7 +18,6 @@ class FetchRequestToken {
             'oauth_callback' => config('services.twitter.redirect'),
         ]);
 
-        dump($response);
 
         return  $response;
     }
