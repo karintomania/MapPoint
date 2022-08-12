@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Actions;
+namespace Tests\Feature\Actions\User;
 
 use App\Actions\User\RegisterUser;
 use App\Models\Point;
