@@ -36,8 +36,10 @@ return [
     ],
 
     'twitter' => [
-        'consumerKey' => env('TWITTER_CONSUMER_KEY'),
-        'consumerSecret' => env('TWITTER_CONSUMER_SECRET'),
-    ]
+        'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+        'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT_URL'),
+    ],
+
 
 ];
