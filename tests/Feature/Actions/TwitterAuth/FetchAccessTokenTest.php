@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Actions\TwitterAuth\FetchAccessToken;
 use Tests\TestCase;
 /**
- * php artisan test ./tests/Feature/Actions/TwitterAuth/
+ * php artisan test ./tests/Feature/Actions/TwitterAuth/FetchAccessTokenTest.php
  */
 class FetchAccessTokenTest extends TestCase
 {
