@@ -3,6 +3,8 @@
 namespace App\Actions\TwitterAuth;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use App\Actions\TwitterAuthRequest\FetchAccessToken;
+use App\Actions\TwitterAuthRequest\VerifyCredential;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 

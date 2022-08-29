@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Actions\TwitterAuth;
 
-use App\Actions\TwitterAuth\FetchAccessToken;
+use App\Actions\TwitterAuthRequest\FetchAccessToken;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Actions\TwitterAuth\LoginTwitterUser;
-use App\Actions\TwitterAuth\VerifyCredential;
+use App\Actions\TwitterAuthRequest\VerifyCredential;
 use App\Models\User;
 use Mockery\MockInterface;
 use Tests\TestCase;

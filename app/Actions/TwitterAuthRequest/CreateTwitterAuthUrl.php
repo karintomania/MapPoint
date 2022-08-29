@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Actions\TwitterAuth;
+namespace App\Actions\TwitterAuthRequest;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use App\Actions\TwitterAuth\FetchRequestToken;
+
 class CreateTwitterAuthUrl {
 
     public TwitterOAuth $twitterOauth;

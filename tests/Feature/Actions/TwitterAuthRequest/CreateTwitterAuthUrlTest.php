@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature\Actions\TwitterAuth;
+namespace Tests\Feature\Actions\TwitterAuthRequest;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Actions\TwitterAuth\CreateTwitterAuthUrl;
+use App\Actions\TwitterAuthRequest\CreateTwitterAuthUrl;
 use Tests\TestCase;
 /**
  * php artisan test ./tests/Feature/Actions/TwitterAuth/CreateTwitterAuthUrlTest.php

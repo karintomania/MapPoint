@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature\Actions\TwitterAuth;
+namespace Tests\Feature\Actions\TwitterAuthRequest;
 
-use App\Actions\TwitterAuth\VerifyCredential;
+use App\Actions\TwitterAuthRequest\VerifyCredential;
 use Abraham\TwitterOAuth\TwitterOAuthException;
 use App\Models\User;
 use Tests\TestCase;

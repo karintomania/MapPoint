@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\TwitterAuth;
+namespace App\Actions\TwitterAuthRequest;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 class FetchAccessToken {

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Actions\TwitterAuth;
+namespace App\Actions\TwitterAuthRequest;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Abraham\TwitterOAuth\TwitterOAuthException;
 use Illuminate\Support\Facades\Log;
-use InvalidArgumentException;
 use stdClass;
 
 class VerifyCredential {
