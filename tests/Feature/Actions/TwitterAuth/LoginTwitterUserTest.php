@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Actions\TwitterAuth;
 
-use App\Actions\TwitterAuthRequest\FetchAccessToken;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Actions\TwitterAuthRequest\GetUserDetailsWithOAuthVerifier;
 use App\Actions\TwitterAuth\LoginTwitterUser;
-use App\Actions\TwitterAuthRequest\VerifyCredential;
 use App\Models\User;
 use Mockery\MockInterface;
 use Tests\TestCase;
@@ -18,32 +17,31 @@ class LoginTwitterUserTest extends TestCase
 
     public function test_LoginTwitterUser_registers_new_user(){
 
-        $accessTokenResponse = [
+        $userDetails = [
             'oauth_token' => 'test_token',
             'oauth_token_secret' => 'test_token_secret',
             "user_id" => "123456789",
             "screen_name" => "Screen Name",
+            "name" => "Test Name",
         ];
-        $userName = "Test Name";
 
-        $this->mockFetchAccessToken($accessTokenResponse);
-        $this->mockVerifyCredential($accessTokenResponse, $userName);
+        $this->mockGetUserDetailsWithOAuthVerifier($userDetails);
+
+        $createTwitterAuthUrl = resolve(LoginTwitterUser::class);
 
         $request = [
             'oauth_token' => 'token',
             'oauth_verifier' => 'verifier',
         ];
-
-        $createTwitterAuthUrl = resolve(LoginTwitterUser::class);
         $resultUser = $createTwitterAuthUrl($request);
 
         $user = User::find($resultUser->id);
 
         $this->assertAuthenticatedAs($user);
-        $this->assertEquals($accessTokenResponse['oauth_token'], $user->twitter_token);
-        $this->assertEquals($accessTokenResponse['oauth_token_secret'], $user->twitter_token_secret);
-        $this->assertEquals($accessTokenResponse['user_id'], $user->twitter_id);
-        $this->assertEquals($userName, $user->name);
+        $this->assertEquals($userDetails['oauth_token'], $user->twitter_token);
+        $this->assertEquals($userDetails['oauth_token_secret'], $user->twitter_token_secret);
+        $this->assertEquals($userDetails['user_id'], $user->twitter_id);
+        $this->assertEquals($userDetails['name'], $user->name);
     }
 
 
@@ -51,49 +49,35 @@ class LoginTwitterUserTest extends TestCase
 
         $user = User::factory()->create();
 
-        $accessTokenResponse = [
+        $userDetails = [
             'oauth_token' => $user->twitter_token . '111',
             'oauth_token_secret' => $user->twitter_token_secret . '222',
             "user_id" => $user->twitter_id,
             "screen_name" => 'screen_name',
+            "name" => $user->name . '333',
         ];
-        $userName = $user->name . '333';
 
-        $this->mockFetchAccessToken($accessTokenResponse);
-        $this->mockVerifyCredential($accessTokenResponse, $userName);
+        $this->mockGetUserDetailsWithOAuthVerifier($userDetails);
+
+        $createTwitterAuthUrl = resolve(LoginTwitterUser::class);
 
         $request = [
             'oauth_token' => 'token',
             'oauth_verifier' => 'verifier',
         ];
-
-        $createTwitterAuthUrl = resolve(LoginTwitterUser::class);
         $resultUser = $createTwitterAuthUrl($request);
 
         $this->assertAuthenticatedAs($resultUser);
         $this->assertEquals($user->id, $resultUser->id);
-        $this->assertEquals($accessTokenResponse['oauth_token'], $resultUser->twitter_token);
-        $this->assertEquals($accessTokenResponse['oauth_token_secret'], $resultUser->twitter_token_secret);
-        $this->assertEquals($accessTokenResponse['user_id'], $resultUser->twitter_id);
-        $this->assertEquals($userName, $resultUser->name);
+        $this->assertEquals($userDetails['oauth_token'], $resultUser->twitter_token);
+        $this->assertEquals($userDetails['oauth_token_secret'], $resultUser->twitter_token_secret);
+        $this->assertEquals($userDetails['user_id'], $resultUser->twitter_id);
+        $this->assertEquals($userDetails['name'], $resultUser->name);
     }
 
-    private function mockFetchAccessToken(array $accessTokenResponse){
-        $this->mock(FetchAccessToken::class, function (MockInterface $mock) use ($accessTokenResponse) {
-            $mock->shouldReceive(['__invoke' => $accessTokenResponse]);
-        });
-    }
-
-    private function mockVerifyCredential(array $accessTokenResponse, string $userName){
-        $this->mock(VerifyCredential::class, function (MockInterface $mock) use ($accessTokenResponse, $userName) {
-            $result = json_decode(<<<JSON
-                {
-                    "id": "{$accessTokenResponse['user_id']}",
-                    "name": "$userName",
-                    "screen_name": "{$accessTokenResponse['screen_name']}"
-                }
-            JSON);
-            $mock->shouldReceive(['__invoke' => $result]);
+    private function mockGetUserDetailsWithOAuthVerifier(array $userDetails){
+        $this->mock(GetUserDetailsWithOAuthVerifier::class, function (MockInterface $mock) use ($userDetails) {
+            $mock->shouldReceive(['__invoke' => $userDetails]);
         });
     }
 

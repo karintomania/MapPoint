@@ -21,7 +21,6 @@ class VerifyCredentialTest extends TestCase
         ];
 
         $result = $verifyCredential($data);
-        dump($result);
 
         $this->assertNotEmpty($result->id);
         $this->assertNotEmpty($result->screen_name);
