@@ -5,7 +5,6 @@ namespace Tests\Feature\Http\Controllers\Auth;
 use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * to run the test

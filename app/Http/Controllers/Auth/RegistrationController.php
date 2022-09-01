@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Actions\User\RegisterUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 
 class RegistrationController extends Controller

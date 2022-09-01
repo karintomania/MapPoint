@@ -2,7 +2,6 @@
 
 namespace App\Actions\TwitterAuth;
 
-use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Actions\TwitterAuthRequest\GetUserDetailsWithOAuthVerifier;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;

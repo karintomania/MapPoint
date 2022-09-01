@@ -3,7 +3,6 @@
 namespace Tests\Feature\Actions\User;
 
 use App\Actions\User\RegisterUser;
-use App\Models\Point;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Hash;

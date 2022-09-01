@@ -7,8 +7,6 @@ use App\Actions\UpdatePoint;
 use App\Models\Point;
 use Illuminate\Http\Request;
 
-use function Tonysm\TurboLaravel\dom_id;
-
 class PointController extends Controller
 {
     /**
