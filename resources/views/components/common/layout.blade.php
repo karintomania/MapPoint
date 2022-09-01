@@ -1,4 +1,8 @@
-
+@props([
+    'showLogin' => !auth()->check(),
+    'showLogout' => auth()->check(),
+    'lead' => '',
+])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,10 @@
     <title>Document</title>
 </head>
 <body>
-    <x-common.header>MapPoint 📍</x-common.header>
+    <x-common.header :showLogin="$showLogin" :showLogout="$showLogout"></x-common.header>
+    @if($lead !== '')
+        <x-common.lead>{{$lead}}</x-common.lead>
+    @endif
     {{$slot}}
 </body>
 </html>
