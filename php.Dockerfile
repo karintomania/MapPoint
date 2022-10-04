@@ -7,7 +7,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 && docker-php-ext-install intl \
 && docker-php-ext-install pdo \
 && pecl install xdebug pcov \
-&& docker-php-ext-enable xdebug pcov
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 CMD apachectl -D FOREGROUND

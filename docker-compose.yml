@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  web-server:
+  map-point:
     container_name: map-point
     build:
       dockerfile: php.Dockerfile
@@ -9,7 +9,7 @@ services:
     volumes:
       - ".:/var/www/html/"
       - "./container/php/php.ini:/usr/local/etc/php/php.ini"
-      - "./container/php/pcov.ini:/usr/local/etc/php/conf.d/docker-php-ext-pcov.ini"
+      # - "./container/php/pcov.ini:/usr/local/etc/php/conf.d/docker-php-ext-pcov.ini"
       - "./container/php/xdebug-local.ini:/usr/local/etc/php/conf.d/xdebug-local.ini"
       - "./container/apache2/000-default.conf:/etc/apache2/sites-available/000-default.conf"
     ports:
