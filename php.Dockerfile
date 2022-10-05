@@ -6,7 +6,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 && apt-get install -y libicu-dev gnupg2 unzip git nodejs \
 && docker-php-ext-install intl \
 && docker-php-ext-install pdo \
-&& pecl install xdebug pcov \
+&& pecl install xdebug pcov
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 CMD apachectl -D FOREGROUND
