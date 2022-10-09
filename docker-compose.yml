@@ -14,7 +14,8 @@ services:
       - "./container/apache2/000-default.conf:/etc/apache2/sites-available/000-default.conf"
     ports:
       - "84:80"
+      - "5173:5173"
     user: www-data
     extra_hosts:
       - "host.docker.internal:host-gateway"
-      - "laravel-test.local:127.0.0.1"
+      - "localhost:127.0.0.1"
