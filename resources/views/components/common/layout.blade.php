@@ -17,6 +17,8 @@
     @if($lead !== '')
         <x-common.lead>{{$lead}}</x-common.lead>
     @endif
-    {{$slot}}
+	<main {{$attributes}}>
+		{{$slot}}
+	</main>
 </body>
 </html>
