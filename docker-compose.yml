@@ -15,7 +15,6 @@ services:
     ports:
       - "84:80"
       - "5173:5173"
-    user: www-data
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "localhost:127.0.0.1"
