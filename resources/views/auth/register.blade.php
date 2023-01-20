@@ -1,10 +1,12 @@
-<x-common.layout>
-    <form method="post" action="{{route('auth.store')}}">
+<x-common.layout lead="Sign Up" class="flex justify-center">
+    <form class="px-4 w-full sm:w-1/2 flex flex-col gap-y-4" method="post" action="{{route('auth.store')}}">
         @csrf
-        <label for="name">name</label><input type="text" id="name" name="name">
-        <label for="name">email</label><input type="text" name="email">
-        <label for="name">password</label><input type="password" name="password">
-        <input type="submit">
+		<x-form.text textId="name" textLabel="User Name"></x-form.text>
+		<x-form.text textId="email" textLabel="Email"></x-form.text>
+		<x-form.password textId="password" textLabel="Password"></x-form.password>
+		<div class="text-center">
+			<input class="btn btn-primary text-white" type="submit" value="Sign Up"/>
+		</div>
     </form>
     <ol>
         @foreach ($errors->all() as $error)

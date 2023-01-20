@@ -6,6 +6,9 @@
 		<div class="text-center">
 			<input class="btn btn-primary text-white" type="submit" value="Login"/>
 		</div>
+		<div class="text-center">
+			<a class="underline" href="{{route('auth.register')}}">No Account? Sign In</a>
+		</div>
     </form>
     <ol>
         @foreach ($errors->all() as $error)
