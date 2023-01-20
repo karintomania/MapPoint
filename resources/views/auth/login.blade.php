@@ -3,7 +3,9 @@
         @csrf
 		<x-form.text textId="email" textLabel="Email"></x-form.text>
 		<x-form.password textId="password" textLabel="Password"></x-form.password>
-        <input class="bg-blue-600 text-white" type="button" value="Login"/>
+		<div class="text-center">
+			<input class="btn btn-primary text-white" type="submit" value="Login"/>
+		</div>
     </form>
     <ol>
         @foreach ($errors->all() as $error)
