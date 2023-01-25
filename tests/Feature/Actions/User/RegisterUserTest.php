@@ -32,6 +32,7 @@ class RegisterUserTest extends TestCase
 
         $this->assertEquals($data['name'], $user->name);
         $this->assertEquals($data['email'], $user->email);
+        $this->assertEquals($data['email'], $user->twitter_id);
         $this->assertTrue(Hash::check($data['password'], $user->password));
     }
 

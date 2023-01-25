@@ -19,7 +19,7 @@ class RegisterUser {
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'twitter_id' => '',
+            'twitter_id' => $data['email'], // add email to avoid unique key error on this column
             'twitter_token' => '',
             'twitter_token_secret' => '',
         ]);
