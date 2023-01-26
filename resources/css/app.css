@@ -4,9 +4,9 @@
 
 @layer components {
   .btn {
-    @apply px-2 py-1 rounded-md
+    @apply px-3 py-1 rounded-lg
   }
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-800
+    @apply bg-blue-600 hover:bg-blue-800 text-white
   }
 }

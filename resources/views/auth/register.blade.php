@@ -1,4 +1,4 @@
-<x-common.layout lead="Sign Up" class="flex justify-center">
+<x-common.layout lead="Sign Up" class="flex flex-col items-center">
     <form class="px-4 w-full sm:w-1/2 flex flex-col gap-y-4" method="post" action="{{route('auth.store')}}">
         @csrf
 		<x-form.text textId="name" textLabel="User Name"></x-form.text>
@@ -13,4 +13,8 @@
             <li>{{ $error }}</li>
         @endforeach
     </ol>
+	<div class="h-0.5 my-8 border-0 w-2/3 bg-gray-300" ></div>
+    <div class="w-full text-center">
+		<a class="btn btn-primary" href="{{route('twitter.login')}}">Sign in with Twitter</a>
+    </div>
 </x-common.layout>
