@@ -1,7 +1,7 @@
 @props(
     ['lat' => 0, 'lng' => 0, 'apiKey']
 )
-    <iframe class="h-60 w-full"
+    <iframe  {{ $attributes->merge(['class' => 'h-60 w-full']) }}
         loading="lazy"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"

@@ -1,6 +1,5 @@
-<x-common.layout>
-    <div class="p-4">
-        <h1 class="my-8 text-center text-2xl">Save any places</h1>
+<x-common.layout lead="Save Any Places" class="m-24">
+    <div>
         <div class="flex flex-col gap-8">
             @include('points._create')
             <turbo-frame id="point-list" src="{{route('points.index')}}">

@@ -14,10 +14,10 @@
 </head>
 <body>
     <x-common.header :showLogin="$showLogin" :showLogout="$showLogout"></x-common.header>
-    @if($lead !== '')
-        <x-common.lead>{{$lead}}</x-common.lead>
-    @endif
 	<main {{$attributes}}>
+        @if($lead !== '')
+            <x-common.lead>{{$lead}}</x-common.lead>
+        @endif
 		{{$slot}}
 	</main>
 </body>

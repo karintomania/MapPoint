@@ -9,4 +9,7 @@
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-800 text-white
   }
+  .form-input {
+    @apply border border-gray-200 drop-shadow-md p-1
+  }
 }
