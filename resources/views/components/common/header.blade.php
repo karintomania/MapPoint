@@ -4,7 +4,7 @@
 ])
 <div class=" px-8 py-4 text-white font-bold bg-blue-600 flex justify-between">
     <h1 class="text-3xl ">
-        MapPoint 📍
+        MapPoint <i class="fa-solid fa-location-dot"></i>
     </h1>
     <div>
         @if($showLogin)
