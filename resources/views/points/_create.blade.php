@@ -1,7 +1,7 @@
 <turbo-frame id="point-create" class="bg-gray-100">
     <div class="flex">
         <x-points.map class="w-2/5" lat="10" lng="-20" />
-        <div class="p-4 bg-gray-100 w-3/5">
+        <div class="p-4 w-3/5">
             <form method="POST" action="{{route('points.store')}}" target="_top">
                 @csrf
                 <textarea class="w-full form-input" name="note" rows="8" placeholder="Note for this point:"></textarea>
