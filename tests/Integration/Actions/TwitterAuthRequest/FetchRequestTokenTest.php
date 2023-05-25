@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Actions\TwitterAuthRequest;
+namespace Tests\Integration\Actions\TwitterAuthRequest;
 
 use App\Actions\TwitterAuthRequest\FetchRequestToken;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

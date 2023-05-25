@@ -11,6 +11,7 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
+        <!-- Don't run Integration folder as it requires a real API call -->
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
