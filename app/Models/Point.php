@@ -20,5 +20,4 @@ class Point extends Model
         'lat',
         'lng',
     ];
-
 }

@@ -17,6 +17,7 @@ class PointController extends Controller
     public function index()
     {
         $points = Point::orderByDesc('id')->get();
+
         return view('points._index', ['points' => $points]);
     }
 
@@ -41,7 +42,7 @@ class PointController extends Controller
     public function store(Request $request, CreatePoint $createPoint)
     {
         $point = $createPoint($request->all());
-        
+
         return response()->turboStreamView(
             'points.turbo.created',
             ['point' => $point]
@@ -80,6 +81,7 @@ class PointController extends Controller
     public function update(Request $request, Point $point, UpdatePoint $updatePoint)
     {
         $point = $updatePoint($request->all(), $point);
+
         return view('points._show', ['point' => $point]);
     }
 
@@ -93,6 +95,6 @@ class PointController extends Controller
     {
         $point->delete();
 
-        return response()->turboStream()->remove($point);;
+        return response()->turboStream()->remove($point);
     }
 }

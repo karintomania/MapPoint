@@ -2,14 +2,13 @@
 
 namespace Tests\Feature\Actions;
 
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-trait CreateRequest{
-
+trait CreateRequest
+{
     public function createRequest($method, $uri, $parameters = [], $cookies = [], $files = [], $server = [], $content = null)
     {
-
         $files = array_merge($files, $this->extractFilesFromDataArray($parameters));
 
         $symfonyRequest = SymfonyRequest::create(

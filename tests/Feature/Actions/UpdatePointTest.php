@@ -15,12 +15,12 @@ class UpdatePointTest extends TestCase
     public function test_update_point_updates_a_point()
     {
 
-        /**  @var UpdatePoint $updatePoint*/
-        $updatePoint =  resolve(UpdatePoint::class);
+        /** @var UpdatePoint $updatePoint */
+        $updatePoint = resolve(UpdatePoint::class);
         $point = Point::factory()->create();
 
         $data = [
-            'note' => 'updated!'
+            'note' => 'updated!',
         ];
 
         $updatePoint($data, $point);
@@ -29,14 +29,13 @@ class UpdatePointTest extends TestCase
 
         $this->assertEquals($point->id, $updated->id);
         $this->assertEquals($data['note'], $updated->note);
-
     }
 
     public function test_note_is_required()
     {
 
-        /**  @var UpdatePoint $updatePoint*/
-        $updatePoint =  resolve(UpdatePoint::class);
+        /** @var UpdatePoint $updatePoint */
+        $updatePoint = resolve(UpdatePoint::class);
         $point = Point::factory()->create();
 
         $data = [
@@ -46,6 +45,5 @@ class UpdatePointTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The note field is required.');
         $updatePoint($data, $point);
-
     }
 }

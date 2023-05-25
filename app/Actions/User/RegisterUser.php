@@ -6,9 +6,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterUser {
-    public function __invoke(array $data): User{
-
+class RegisterUser
+{
+    public function __invoke(array $data): User
+    {
         $data = Validator::validate($data, [
             'name' => 'required',
             'email' => 'required|email',

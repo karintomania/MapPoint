@@ -3,18 +3,19 @@
 namespace Tests\Feature\Http\Controllers\Auth;
 
 use App\Models\User;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 /**
  * to run the test
  * php artisan test ./tests/Feature/Http/Controllers/Auth/LogoutControllerTest.php
  */
-class LogoutControllerTest extends TestCase{
-
+class LogoutControllerTest extends TestCase
+{
     use DatabaseMigrations;
 
-    public function test_logout_logouts_user(){
+    public function test_logout_logouts_user()
+    {
         $user = User::factory()->create();
 
         // login

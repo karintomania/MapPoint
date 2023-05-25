@@ -5,10 +5,10 @@ namespace App\Actions;
 use App\Models\Point;
 use Illuminate\Support\Facades\Validator;
 
-class CreatePoint{
-
-    public function __invoke(array $data): Point{
-
+class CreatePoint
+{
+    public function __invoke(array $data): Point
+    {
         $data = Validator::validate($data, [
             'note' => 'required',
             'lat' => 'required|numeric',

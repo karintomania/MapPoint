@@ -10,16 +10,17 @@ use Tests\TestCase;
 
 /**
  * to run this test
- * php artisan test ./tests/Feature/Actions/User/LoginUserTest.php 
+ * php artisan test ./tests/Feature/Actions/User/LoginUserTest.php
  */
 class LoginUserTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function test_login_user_logins_user(){
+    public function test_login_user_logins_user()
+    {
         /** @var LoginUser $loginUser */
         $loginUser = resolve(LoginUser::class);
-        
+
         $user = User::factory()->create();
 
         $data = [
@@ -29,13 +30,13 @@ class LoginUserTest extends TestCase
 
         $this->assertNull($loginUser($data));
         $this->assertAuthenticatedAs($user);
-
     }
 
-    public function test_login_user_shows_credential_error(){
+    public function test_login_user_shows_credential_error()
+    {
         /** @var LoginUser $loginUser */
         $loginUser = resolve(LoginUser::class);
-        
+
         $user = User::factory()->create();
 
         $data = [
@@ -46,9 +47,7 @@ class LoginUserTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The email and password is incorrect.');
         $loginUser($data);
-
     }
-
 
     public function test_email_is_required()
     {
@@ -63,7 +62,6 @@ class LoginUserTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->expectExceptionMessage('The email field is required.');
         $loginUser($data);
-
     }
 
     public function test_email_should_be_in_right_format()
@@ -81,7 +79,7 @@ class LoginUserTest extends TestCase
         $loginUser($data);
     }
 
-    Public function test_password_is_required()
+    public function test_password_is_required()
     {
         /** @var LoginUser $loginUser */
         $loginUser = resolve(LoginUser::class);
@@ -95,5 +93,4 @@ class LoginUserTest extends TestCase
         $this->expectExceptionMessage('The password field is required.');
         $loginUser($data);
     }
-
 }

@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\{MainController, PointController};
-use App\Http\Controllers\Auth\{RegistrationController, LoginController, LogoutController, TwitterAuthController};
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\Auth\TwitterAuthController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PointController;
 use Illuminate\Support\Facades\Route;
 
 /*

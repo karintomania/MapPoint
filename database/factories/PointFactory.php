@@ -19,8 +19,8 @@ class PointFactory extends Factory
         return [
             'user_id' => 1,
             'note' => fake()->words(3, true),
-            'lat' => fake()->randomFloat(4,-90.0, 90.0),
-            'lng' => fake()->randomFloat(4,-180.0, 180.0),
+            'lat' => fake()->randomFloat(4, -90.0, 90.0),
+            'lng' => fake()->randomFloat(4, -180.0, 180.0),
         ];
     }
 }

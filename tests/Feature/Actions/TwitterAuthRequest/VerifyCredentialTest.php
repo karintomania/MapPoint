@@ -2,17 +2,17 @@
 
 namespace Tests\Feature\Actions\TwitterAuthRequest;
 
-use App\Actions\TwitterAuthRequest\VerifyCredential;
 use Abraham\TwitterOAuth\TwitterOAuthException;
-use App\Models\User;
+use App\Actions\TwitterAuthRequest\VerifyCredential;
 use Tests\TestCase;
+
 /**
  * php artisan test ./tests/Feature/Actions/TwitterAuth/VerifyCredentialTest.php
  */
 class VerifyCredentialTest extends TestCase
 {
-
-    public function test_VerifyCredential_get_credential(){
+    public function test_VerifyCredential_get_credential()
+    {
         $verifyCredential = resolve(VerifyCredential::class);
 
         $data = [
@@ -27,7 +27,8 @@ class VerifyCredentialTest extends TestCase
         $this->assertNotEmpty($result->name);
     }
 
-    public function test_VerifyCredential_throw_error(){
+    public function test_VerifyCredential_throw_error()
+    {
         $verifyCredential = resolve(VerifyCredential::class);
 
         $data = [

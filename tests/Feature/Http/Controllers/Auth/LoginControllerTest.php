@@ -15,7 +15,8 @@ class LoginControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function test_login_shows_login(){
+    public function test_login_shows_login()
+    {
         $response = $this->get(route('login'));
 
         $response->assertOk();
@@ -26,7 +27,8 @@ class LoginControllerTest extends TestCase
         ], $escape = false);
     }
 
-    public function test_auth_authorises_user(){
+    public function test_auth_authorises_user()
+    {
         $user = User::factory()->create();
 
         $data = [
@@ -45,11 +47,13 @@ class LoginControllerTest extends TestCase
     /**
      * @depends test_auth_authorises_user
      */
-    public function test_auth_redirects_to_index_on_success(TestResponse $response){
+    public function test_auth_redirects_to_index_on_success(TestResponse $response)
+    {
         $response->assertRedirect('/');
     }
 
-    public function test_auth_validates_invalid_input(){
+    public function test_auth_validates_invalid_input()
+    {
         $data = [
             'email' => 'test',
             'password' => 'password',
@@ -60,10 +64,10 @@ class LoginControllerTest extends TestCase
 
         $response->assertRedirect(route('login'));
         $response->assertInvalid(['email' => 'The email must be a valid email address.']);
-
     }
 
-    public function test_auth_validates_incorrect_credential(){
+    public function test_auth_validates_incorrect_credential()
+    {
         $data = [
             'email' => 'test@example.com',
             'password' => 'password',
@@ -74,10 +78,10 @@ class LoginControllerTest extends TestCase
 
         $response->assertRedirect(route('login'));
         $response->assertInvalid(['email' => 'The email and password is incorrect.']);
-
     }
 
-    public function test_auth_shows_invalid_input_message(){
+    public function test_auth_shows_invalid_input_message()
+    {
         $data = [
             'email' => 'test@example.com',
             'password' => 'password',
@@ -89,6 +93,4 @@ class LoginControllerTest extends TestCase
         $response->assertViewIs('auth.login');
         $response->assertSee(['The email and password is incorrect.']);
     }
-
-
 }

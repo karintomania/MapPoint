@@ -11,13 +11,14 @@ use Tests\TestCase;
 
 /**
  * to run this test
- * php artisan test ./tests/Feature/Actions/User/RegisterUserTest.php 
+ * php artisan test ./tests/Feature/Actions/User/RegisterUserTest.php
  */
 class RegisterUserTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function test_register_user_registers_user(){
+    public function test_register_user_registers_user()
+    {
         /** @var RegisterUser $registerUser */
         $registerUser = resolve(RegisterUser::class);
         $data = [
@@ -39,7 +40,8 @@ class RegisterUserTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function test_validation($data, $message){
+    public function test_validation($data, $message)
+    {
 
         /** @var RegisterUser $registerUser */
         $registerUser = resolve(RegisterUser::class);
@@ -49,7 +51,8 @@ class RegisterUserTest extends TestCase
         $registerUser($data);
     }
 
-    public function provider(){
+    public function provider()
+    {
         return [
             [
                 [
@@ -57,7 +60,7 @@ class RegisterUserTest extends TestCase
                     'email' => 'test@example.com',
                     'password' => 'pasword12345',
                 ],
-                'The name field is required.'
+                'The name field is required.',
             ],
             [
                 [
@@ -65,7 +68,7 @@ class RegisterUserTest extends TestCase
                     'email' => '',
                     'password' => 'pasword12345',
                 ],
-                'The email field is required.'
+                'The email field is required.',
             ],
             [
                 [
@@ -73,7 +76,7 @@ class RegisterUserTest extends TestCase
                     'email' => 'test',
                     'password' => 'pasword12345',
                 ],
-                'The email must be a valid email address.'
+                'The email must be a valid email address.',
             ],
             [
                 [
@@ -89,7 +92,7 @@ class RegisterUserTest extends TestCase
                     'email' => 'test@example.com',
                     'password' => 'pasword',
                 ],
-                'The password must be at least 8 characters.'
+                'The password must be at least 8 characters.',
             ],
         ];
     }
