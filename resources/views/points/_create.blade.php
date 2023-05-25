@@ -1,6 +1,19 @@
 <turbo-frame id="point-create" class="bg-gray-100">
-    <div class="flex">
-        <x-points.map class="w-2/5" lat="10" lng="-20" />
+    <div 
+        class="flex"
+        x-data="{
+            currentLocation:{
+                lat: 0,
+                lng: 0,
+            },
+            init(){
+                getCurrentLocation((lt, lg) => {
+                    this.currentLocation.lat = lt;
+                    this.currentLocation.lng = lg;
+            })}
+        }"
+    >
+        <x-points.map class="w-2/5" />
         <div class="p-4 w-3/5">
             <form method="POST" action="{{route('points.store')}}" target="_top">
                 @csrf
@@ -8,8 +21,8 @@
                 <div class="text-center">
                 <input class="btn btn-primary " type="submit">
                 </div>
-                <input type="hidden" name="lat" value="10" >
-                <input type="hidden" name="lng" value="20" >
+                <input type="hidden" name="lat" x-model="currentLocation.lat" >
+                <input type="hidden" name="lng" x-model="currentLocation.lng" >
             </form> 
         </div>
         @foreach ($errors->all() as $error)
