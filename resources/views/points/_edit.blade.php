@@ -5,11 +5,13 @@
             <form method="put" action="{{route('points.update', ['point' => $point])}}" >
                 @csrf
                 <textarea class="w-full form-input" name="note" rows="4" placeholder="Note for this point:" >{{$point->note}}</textarea>
+                @foreach ($errors->all() as $error)
+                        <div class="text-red-400">
+                            <li>{{ $error }}</li>
+                        </div>
+                @endforeach
                 <input class="btn btn-primary" type="submit" value="save" />
             </form>
         </div>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
     </div>
 </turbo-frame>

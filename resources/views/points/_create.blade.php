@@ -18,15 +18,18 @@
             <form method="POST" action="{{route('points.store')}}" target="_top">
                 @csrf
                 <textarea class="w-full form-input" name="note" rows="8" placeholder="Note for this point:"></textarea>
+                @foreach ($errors->all() as $error)
+                        <div class="text-red-400">
+                            <li>{{ $error }}</li>
+                        </div>
+                @endforeach
                 <div class="text-center">
-                <input class="btn btn-primary " type="submit">
+                    <input class="btn btn-primary " type="submit">
                 </div>
                 <input type="hidden" name="lat" x-model="currentLocation.lat" >
                 <input type="hidden" name="lng" x-model="currentLocation.lng" >
             </form> 
+
         </div>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
     </div>
 </turbo-frame>
