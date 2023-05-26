@@ -8,9 +8,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
-/**
- * php artisan test ./tests/Feature/Actions/TwitterAuthRequest/FetchAccessTokenTest.php
- */
 class FetchAccessTokenTest extends TestCase
 {
     // use DatabaseMigrations;

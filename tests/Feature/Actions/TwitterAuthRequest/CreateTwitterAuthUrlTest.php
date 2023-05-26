@@ -3,15 +3,10 @@
 namespace Tests\Feature\Actions\TwitterAuthRequest;
 
 use App\Actions\TwitterAuthRequest\CreateTwitterAuthUrl;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-/**
- * php artisan test ./tests/Feature/Actions/TwitterAuth/CreateTwitterAuthUrlTest.php
- */
 class CreateTwitterAuthUrlTest extends TestCase
 {
-    // use DatabaseMigrations;
 
     public function test_createTwitterAuthUrl_fetches_access_token()
     {

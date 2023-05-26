@@ -9,9 +9,6 @@ use App\Actions\TwitterAuthRequest\VerifyCredential;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
-/**
- * php artisan test ./tests/Feature/Actions/TwitterAuthRequest/GetUserDetailsWithOAuthVerifierTest.php
- */
 class GetUserDetailsWithOAuthVerifierTest extends TestCase
 {
     public function test_GetUserDetailsWithOAuthVerifierTest_returns_user_details()
