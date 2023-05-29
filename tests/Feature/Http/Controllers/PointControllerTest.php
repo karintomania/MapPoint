@@ -4,7 +4,6 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Point;
 use App\Models\User;
-use Database\Factories\PointFactory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
@@ -76,14 +75,13 @@ class PointControllerTest extends TestCase
         $response->assertViewIs('points._index');
 
         $response->assertSeeInOrder([
-            'lat: ' . $points[2]->lat,
-            'lng: ' . $points[2]->lng,
-            'lat: ' . $points[1]->lat,
-            'lng: ' . $points[1]->lng,
-            'lat: ' . $points[0]->lat,
-            'lng: ' . $points[0]->lng,
+            'lat: '.$points[2]->lat,
+            'lng: '.$points[2]->lng,
+            'lat: '.$points[1]->lat,
+            'lng: '.$points[1]->lng,
+            'lat: '.$points[0]->lat,
+            'lng: '.$points[0]->lng,
         ]);
-
     }
 
     public function test_create_shows_create()

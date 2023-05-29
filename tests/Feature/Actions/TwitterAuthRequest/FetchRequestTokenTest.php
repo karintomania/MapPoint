@@ -14,15 +14,15 @@ class FetchRequestTokenTest extends TestCase
     public function test_fetchAccessToken_fetches_access_token()
     {
         $mockResult = [
-              "oauth_token" => "xxxxxxx",
-              "oauth_token_secret" => "yyyyyyyy",
-              "oauth_callback_confirmed" => "true"
-            ];
-        $this->mock(TwitterOAuth::class, function (MockInterface $mock) use ($mockResult){
+            'oauth_token' => 'xxxxxxx',
+            'oauth_token_secret' => 'yyyyyyyy',
+            'oauth_callback_confirmed' => 'true',
+        ];
+        $this->mock(TwitterOAuth::class, function (MockInterface $mock) use ($mockResult) {
             $result = $mockResult;
             $mock->shouldReceive(['oauth' => $result])
             ->withArgs(['oauth/request_token',
-                ['oauth_callback' => config('services.twitter.redirect')]]);
+                ['oauth_callback' => config('services.twitter.redirect')], ]);
         });
 
         $fetchRequestToken = resolve(FetchRequestToken::class);

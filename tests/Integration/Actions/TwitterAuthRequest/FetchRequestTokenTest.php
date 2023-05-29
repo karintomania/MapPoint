@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class FetchRequestTokenTest extends TestCase
 {
-
     public function test_fetchRequestToken_fetches_request_token()
     {
         $fetchRequestToken = resolve(FetchRequestToken::class);

@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class CreateTwitterAuthUrlTest extends TestCase
 {
-
     public function test_createTwitterAuthUrl_fetches_access_token()
     {
         $createTwitterAuthUrl = resolve(CreateTwitterAuthUrl::class);

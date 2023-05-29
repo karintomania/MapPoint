@@ -20,7 +20,7 @@ class VerifyCredentialTest extends TestCase
             'oauth_token_secret' => 'yyyyyy',
         ];
 
-        $mockResult = json_decode(<<<JSON
+        $mockResult = json_decode(<<<'JSON'
         {
             "id": 9999999999999999999,
             "name": "test name",
@@ -28,7 +28,7 @@ class VerifyCredentialTest extends TestCase
         }
         JSON);
 
-        $this->mock(TwitterOAuth::class, function(MockInterface $mock) use ($data, $mockResult){
+        $this->mock(TwitterOAuth::class, function (MockInterface $mock) use ($data, $mockResult) {
             $mock->shouldReceive('setOauthToken')
             ->withArgs([$data['oauth_token'], $data['oauth_token_secret']]);
 
@@ -39,7 +39,6 @@ class VerifyCredentialTest extends TestCase
 
         $verifyCredential = resolve(VerifyCredential::class);
 
-
         $result = $verifyCredential($data);
 
         $this->assertEquals($mockResult->id, $result->id);
@@ -49,13 +48,12 @@ class VerifyCredentialTest extends TestCase
 
     public function test_VerifyCredential_throw_error()
     {
-
         $data = [
             'oauth_token' => 'wrong_token',
             'oauth_token_secret' => 'wrong_token_secret',
         ];
 
-        $mockResult = json_decode(<<<JSON
+        $mockResult = json_decode(<<<'JSON'
         {
             "errors": [
                 {
@@ -66,7 +64,7 @@ class VerifyCredentialTest extends TestCase
         }
         JSON);
 
-        $this->mock(TwitterOAuth::class, function(MockInterface $mock) use ($data, $mockResult){
+        $this->mock(TwitterOAuth::class, function (MockInterface $mock) use ($data, $mockResult) {
             $mock->shouldReceive('setOauthToken')
             ->withArgs([$data['oauth_token'], $data['oauth_token_secret']]);
 
