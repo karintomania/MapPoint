@@ -21,11 +21,15 @@ class PointControllerTest extends TestCase
     use InteractsWithTurbo;
 
     public User $user;
+    public User $anotherUser;
 
     public function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        $this->anotherUser = User::factory()->create([
+
+        ]);
     }
 
     /**
@@ -69,6 +73,7 @@ class PointControllerTest extends TestCase
     public function test_index_shows_points()
     {
         $points = Point::factory()->count(3)->create(['user_id' => $this->user->id]);
+        $another_user_point = Point::factory()->create(['user_id' => $this->anotherUser->id]);
         $response = $this->actingAs($this->user)->get(route('points.index'));
 
         $response->assertOk();
@@ -82,6 +87,8 @@ class PointControllerTest extends TestCase
             'lat: '.$points[0]->lat,
             'lng: '.$points[0]->lng,
         ]);
+
+        $response->assertDontSee('lat: ' . $another_user_point->lat);
     }
 
     public function test_create_shows_create()
@@ -103,7 +110,7 @@ class PointControllerTest extends TestCase
 
         $storedPoint = Point::first();
 
-        $this->assertEquals(1, $storedPoint->user_id);
+        $this->assertEquals($this->user->id, $storedPoint->user_id);
         $this->assertEquals($data['note'], $storedPoint->note);
         $this->assertEquals($data['lat'], $storedPoint->lat);
         $this->assertEquals($data['lng'], $storedPoint->lng);

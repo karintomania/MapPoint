@@ -16,7 +16,10 @@ class PointController extends Controller
      */
     public function index()
     {
-        $points = Point::orderByDesc('id')->get();
+        $user = auth()->user();
+        $points = Point::where('user_id', $user->id)
+        ->orderByDesc('id')
+        ->get();
 
         return view('points._index', ['points' => $points]);
     }
@@ -41,7 +44,8 @@ class PointController extends Controller
      */
     public function store(Request $request, CreatePoint $createPoint)
     {
-        $point = $createPoint($request->all());
+        $user = auth()->user();
+        $point = $createPoint($request->all(), $user->id);
 
         return response()->turboStreamView(
             'points.turbo.created',
