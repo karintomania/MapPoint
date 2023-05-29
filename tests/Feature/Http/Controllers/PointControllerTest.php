@@ -4,6 +4,7 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Point;
 use App\Models\User;
+use Database\Factories\PointFactory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
@@ -54,16 +55,35 @@ class PointControllerTest extends TestCase
         ];
     }
 
-    public function test_index_shows_index()
+    public function test_home_shows_index()
     {
         $response = $this->actingAs($this->user)->get('/');
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertViewIs('index');
         $response->assertSeeInOrder([
             'point-create',
             'point-list',
         ]);
+    }
+
+    public function test_index_shows_points()
+    {
+        $points = Point::factory()->count(3)->create(['user_id' => $this->user->id]);
+        $response = $this->actingAs($this->user)->get(route('points.index'));
+
+        $response->assertOk();
+        $response->assertViewIs('points._index');
+
+        $response->assertSeeInOrder([
+            'lat: ' . $points[2]->lat,
+            'lng: ' . $points[2]->lng,
+            'lat: ' . $points[1]->lat,
+            'lng: ' . $points[1]->lng,
+            'lat: ' . $points[0]->lat,
+            'lng: ' . $points[0]->lng,
+        ]);
+
     }
 
     public function test_create_shows_create()
