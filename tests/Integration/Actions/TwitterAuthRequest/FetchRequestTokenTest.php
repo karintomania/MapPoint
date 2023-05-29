@@ -3,15 +3,10 @@
 namespace Tests\Integration\Actions\TwitterAuthRequest;
 
 use App\Actions\TwitterAuthRequest\FetchRequestToken;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-/**
- * php artisan test ./tests/Feature/Actions/TwitterAuth/
- */
 class FetchRequestTokenTest extends TestCase
 {
-    // use DatabaseMigrations;
 
     public function test_fetchRequestToken_fetches_request_token()
     {
