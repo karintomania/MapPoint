@@ -21,8 +21,8 @@ class VerifyCredential
         $this->twitterOAuth->setOauthToken($data['oauth_token'], $data['oauth_token_secret']);
 
         $result = $this->twitterOAuth->get('account/verify_credentials');
-        // process error
 
+        // process error
         if (isset($result->errors)) {
             $error = $result->errors[0];
             Log::error(json_encode($result->errors));
