@@ -19,7 +19,6 @@ class CreatePointTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-
     }
 
     public function test_create_point_creates_a_point()
@@ -55,7 +54,7 @@ class CreatePointTest extends TestCase
     public function vaildationTestDataProvider()
     {
         return $array = [
-            "note is required" => [
+            'note is required' => [
                 [ // $data
                     'note' => '',
                     'lat' => 1.0,
@@ -64,7 +63,7 @@ class CreatePointTest extends TestCase
                 1,
                 'The note field is required.', // exception message
             ],
-            "lat is required" => [
+            'lat is required' => [
                 [
                     'note' => 'test',
                     'lat' => '',
@@ -73,7 +72,7 @@ class CreatePointTest extends TestCase
                 1,
                 'The lat field is required.',
             ],
-            "lng is required" => [ // lng required
+            'lng is required' => [ // lng required
                 [
                     'note' => 'test',
                     'lat' => 10,
@@ -82,7 +81,7 @@ class CreatePointTest extends TestCase
                 1,
                 'The lng field is required.',
             ],
-            "lat is numeric" => [ // lat numeric
+            'lat is numeric' => [ // lat numeric
                 [
                     'note' => 'test',
                     'lat' => 'string',
@@ -91,7 +90,7 @@ class CreatePointTest extends TestCase
                 1,
                 'The lat must be a number.',
             ],
-            "lng is numeric" => [
+            'lng is numeric' => [
                 [
                     'note' => 'test',
                     'lat' => 1,

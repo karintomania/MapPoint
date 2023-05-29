@@ -21,6 +21,7 @@ class PointControllerTest extends TestCase
     use InteractsWithTurbo;
 
     public User $user;
+
     public User $anotherUser;
 
     public function setUp(): void
@@ -88,7 +89,7 @@ class PointControllerTest extends TestCase
             'lng: '.$points[0]->lng,
         ]);
 
-        $response->assertDontSee('lat: ' . $another_user_point->lat);
+        $response->assertDontSee('lat: '.$another_user_point->lat);
     }
 
     public function test_create_shows_create()
