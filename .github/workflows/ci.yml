@@ -1,0 +1,34 @@
+name: Run test
+on: push
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    environment: CI
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+
+    - name: setup PHP
+      uses: "shivammathur/setup-php@v2"
+      with:
+        php-version: "8.0"
+
+    - name: composer install
+      uses: "ramsey/composer-install@v2"
+      with:
+        composer-options: "--ignore-platform-reqs"
+
+    - name: setup laravel
+      run: |
+        cp .env.ci .env
+        touch database/database.sqlite
+        php artisan key:generate
+
+    - name: style check
+      run: |
+        echo 'running pint'
+        php vendor/bin/pint --test
+
+    - name: PHPUnit
+      run: vendor/bin/phpunit tests/
