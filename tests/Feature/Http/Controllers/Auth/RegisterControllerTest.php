@@ -16,6 +16,12 @@ class RegisterControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutVite();
+    }
+
     public function test_register_shows_register()
     {
         $response = $this->get(route('auth.register'));

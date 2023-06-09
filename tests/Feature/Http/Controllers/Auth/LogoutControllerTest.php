@@ -14,6 +14,12 @@ class LogoutControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutVite();
+    }
+
     public function test_logout_logouts_user()
     {
         $user = User::factory()->create();

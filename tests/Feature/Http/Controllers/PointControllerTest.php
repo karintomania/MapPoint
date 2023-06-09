@@ -28,9 +28,8 @@ class PointControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
-        $this->anotherUser = User::factory()->create([
-
-        ]);
+        $this->anotherUser = User::factory()->create();
+        $this->withoutVite();
     }
 
     /**

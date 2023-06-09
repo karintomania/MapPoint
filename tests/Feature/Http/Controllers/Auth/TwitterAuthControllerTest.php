@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
+use App\Actions\TwitterAuthRequest\FetchRequestToken;
 use App\Actions\TwitterAuthRequest\GetUserDetailsWithOAuthVerifier;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -16,8 +17,18 @@ class TwitterAuthControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutVite();
+    }
+
     public function test_login_redirects_to_twitter_auth()
     {
+        $fetchTokenResponse = ['oauth_token' => 'test-oauth-token'];
+        $this->mock(FetchRequestToken::class, function (MockInterface $mock) use ($fetchTokenResponse) {
+            $mock->shouldReceive(['__invoke' => $fetchTokenResponse]);
+        });
         $response = $this->get(route('twitter.login'));
 
         $response->assertRedirectContains('https://api.twitter.com/oauth/authenticate');
