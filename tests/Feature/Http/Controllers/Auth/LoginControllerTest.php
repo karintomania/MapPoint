@@ -15,7 +15,7 @@ class LoginControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->withoutVite();
