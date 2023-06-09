@@ -31,4 +31,4 @@ jobs:
         php vendor/bin/pint --test
 
     - name: PHPUnit
-      run: vendor/bin/phpunit tests/
+      run: vendor/bin/phpunit -c phpunit.xml
